@@ -44,7 +44,7 @@ public class antywirusmanagertest {
 
     @Autowired
     private Iantywirusmanager iantywirusmanager;
-/*
+
     @Before
     public void setUp() throws Exception {
         char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
@@ -56,7 +56,7 @@ public class antywirusmanagertest {
         }
         randomString= sb.toString();
     }
-*/
+
     @After
     public void tearDown() throws Exception {
 
