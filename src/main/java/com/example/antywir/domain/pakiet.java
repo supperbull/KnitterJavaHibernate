@@ -5,11 +5,12 @@ package com.example.antywir.domain;
  */
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @NamedQueries({
         @NamedQuery(name="pakiet.all", query = "select p from pakiet p"),
-        @NamedQuery(name = "pakiet.byfunkcje",query = "select p from pakiet p where p.funkcje=:funkcje "),
+        @NamedQuery(name = "pakiet.bynazwa",query = "select p from pakiet p where p.funkcje=:funkcje "),
 })
 public class pakiet {
 
@@ -17,9 +18,10 @@ public class pakiet {
     private String nazwapakiet;
     private String funkcje;
     private Double cena;
+    private Collection<antywirus> Pakiety;
 
     @Id
-    @Column(name = "IDModel")
+    @Column(name = "IDpakiet")
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id_pakiet;
@@ -53,4 +55,12 @@ public class pakiet {
         this.cena = cena;
     }
 
+    @OneToMany(mappedBy = "pakiet",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    public Collection<antywirus> getantywirusy() {
+        return Pakiety;
+    }
+
+    public void setantywirusy(Collection<antywirus> Pakiety) {
+        this.Pakiety = Pakiety;
+    }
 }

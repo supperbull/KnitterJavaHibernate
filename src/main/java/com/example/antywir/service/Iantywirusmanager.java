@@ -23,10 +23,10 @@ public interface Iantywirusmanager {
     Long addpakiet(pakiet pakiet);
     List<pakiet> WszystkiePakiety();
     pakiet findByIdpakiet(Long id);
-    pakiet findBynazwa(String prod);
+    pakiet findBynazwa(String nazwa);
     void deletepakiet(pakiet pakiet);
 
-   // List<antywirus> getAllantywiruspakiet(Long idantywirus);
-   // void addantywirusTopakiet(Long idantywirus,Long idpakiet);
+    List<antywirus> allantywiruspakiet(Long idantywirus);
+    void addpakiettoantywir(Long idantywirus,Long idpakiet);
 
 }

@@ -20,7 +20,8 @@ public class antywirus {
     private String nazwaantywirus;
     private String opis;
     private double ocena;
-    private Collection<pakiet> Pakiety;
+    private pakiet pakiet;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -56,12 +57,13 @@ public class antywirus {
     public void setocena(double ocena) {
         this.ocena = ocena;
     }
-    @OneToMany(mappedBy = "antywirus",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
-    public Collection<pakiet> getPakiety() {
-        return Pakiety;
+    @ManyToOne
+    @JoinColumn(name = "pakiet_IDpakiet")
+    public pakiet getPakiet() {
+        return pakiet;
     }
 
-    public void setPakiety(Collection<pakiet> Pakiety) {
-        this.Pakiety = Pakiety;
+    public void setPakiet(pakiet pakiet) {
+        this.pakiet = pakiet;
     }
 }

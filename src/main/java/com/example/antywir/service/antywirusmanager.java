@@ -62,7 +62,7 @@ public class antywirusmanager implements Iantywirusmanager {
     public pakiet findBynazwa(String prod) {
         return (pakiet) sessionFactory
                 .getCurrentSession()
-                .getNamedQuery("pakiet.byfunkcje")
+                .getNamedQuery("pakiet.bynazwa")
                 .setString("prod",prod)
                 .uniqueResult();
     }
@@ -122,9 +122,9 @@ public class antywirusmanager implements Iantywirusmanager {
 
 
 
-   // @Override
+    @Override
     @SuppressWarnings("unchecked")
-    public List<antywirus>  getAllantywiruspakiet(Long id_antywirus) {
+    public List<antywirus>  allantywiruspakiet(Long id_antywirus) {
         antywirus antywirus = (com.example.antywir.domain.antywirus) sessionFactory.getCurrentSession()
                 .get(com.example.antywir.domain.antywirus.class, id_antywirus);
         List<antywirus> allCategoryModel=new ArrayList();
@@ -135,14 +135,14 @@ public class antywirusmanager implements Iantywirusmanager {
 
         return allCategoryModel;
     }
-/*
+
     @Override
-    public void addantywirusTopakiet(Long id_antywirus, Long id_pakiet) {
+    public void addpakiettoantywir(Long id_antywirus, Long id_pakiet) {
         pakiet paczka = (pakiet) sessionFactory.getCurrentSession()
                 .get(pakiet.class, id_pakiet);
         antywirus antywirus = (antywirus) sessionFactory.getCurrentSession()
                 .get(antywirus.class, id_antywirus);
-        antywirus.setPakiety();
+        antywirus.setPakiet(paczka);
     }
-*/
+
 }
